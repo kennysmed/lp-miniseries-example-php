@@ -30,7 +30,11 @@ $EDITIONS = array(
   array('bear.png', 'Bear'),
   array('sagoin.png', 'Sagoin, called Galeopithecus'),
   array('lion.png', 'Lion'),
-  array('another_monster.png', 'Another Monster')
+  array('another_monster.png', 'Another Monster'),
+  array('adder.png', 'Adder'),
+  array('african_bugil.png', 'African Bugil'),
+  array('allocamelus.png', 'Allocamelus'),
+  array('alpine_mouse.png', 'Alpine Mouse')
 );
 
 
