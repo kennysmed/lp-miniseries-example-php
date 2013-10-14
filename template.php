@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>TODO</title>
+	<title>The History of Four-Footed Beasts and Serpents</title>
 	<style type="text/css">
 		body {
 			background: #fff;
@@ -64,13 +64,13 @@
 			Serpents
 		</h1>
 
-	<img class="illustration" src="<?php echo $ROOT_DIRECTORY; ?>img/<?php echo $delivery_count; ?>.png" />
+	<img class="illustration" src="<?php echo $ROOT_DIRECTORY; ?>img/<?php echo $edition_data[0]; ?>" />
 
 		<p class="edition">
-			<?php echo ($delivery_count+1); ?> of <?php echo count($DESCRIPTIONS); ?>
+			<?php echo ($delivery_count+1); ?> of <?php echo count($EDITIONS); ?>
 		</p>
 
-	<p class="description"><?php echo $description ?></p>
+	<p class="description"><?php echo $edition_data[1] ?></p>
 	</div>
 
 </body>

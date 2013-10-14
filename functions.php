@@ -2,44 +2,44 @@
 
 $ROOT_DIRECTORY = '/lp-miniseries-example-php/';
 
-$DESCRIPTIONS = array(
-  'Satyre',
-  'Porcuspine or Porcupine',
-  'Lamia',
-  'Man Ape',
-  'Arabian or Egyptian Land Crocodile',
-  'Camelopardals',
-  'Boa',
-  'Unicorn',
-  'Beaver',
-  'Aegopithecus',
-  'Badger',
-  'Hydra',
-  'Ape',
-  'Mantichora',
-  'Squirrel',
-  'Scythian Wolf',
-  'Beaver',
-  'Cepus or Martime monkey',
-  'The mole or want',
-  'Spinga or Sphinx',
-  'Bear Ape Arctopithecus',
-  'Cat',
-  'Winged Dragon',
-  'Prasyan Ape',
-  'A wilde beaste in the New Found World called SU',
-  'Bear',
-  'Sagoin, called Galeopithecus',
-  'Lion',
+$EDITIONS = array(
+  array('satyre.png', 'Satyre'),
+  array('porcupine.png', 'Porcuspine or Porcupine'),
+  array('lamia.png', 'Lamia'),
+  array('man_ape.png', 'Man Ape'),
+  array('crocodile.png', 'Arabian or Egyptian Land Crocodile'),
+  array('camelopardals.png', 'Camelopardals'),
+  array('boa.png', 'Boa'),
+  array('unicorn.png', 'Unicorn'),
+  array('aegopithecus.png', 'Aegopithecus'),
+  array('badger.png', 'Badger'),
+  array('hydra.png', 'Hydra'),
+  array('ape.png', 'Ape'),
+  array('mantichora.png', 'Mantichora'),
+  array('squirrel.png', 'Squirrel'),
+  array('scythian_wolf.png', 'Scythian Wolf'),
+  array('beaver.png', 'Beaver'),
+  array('cepus_monkey.png', 'Cepus or Martime monkey'),
+  array('mole.png', 'The mole or want'),
+  array('sphinx.png', 'Spinga or Sphinx'),
+  array('bear_ape.png', 'Bear Ape Arctopithecus'),
+  array('cat.png', 'Cat'),
+  array('dragon.png', 'Winged Dragon'),
+  array('prasyan_ape.png', 'Prasyan Ape'),
+  array('su.png', 'A wilde beaste in the New Found World called SU'),
+  array('bear.png', 'Bear'),
+  array('sagoin.png', 'Sagoin, called Galeopithecus'),
+  array('lion.png', 'Lion'),
+  array('another_monster.png', 'Another Monster')
 );
 
 
 // Called to generate the sample shown on BERG Cloud Remote.
 function display_sample() {
-	global $ROOT_DIRECTORY, $DESCRIPTIONS;
+	global $ROOT_DIRECTORY, $EDITIONS;
 
 	$delivery_count = 0;
-	$description = $DESCRIPTIONS[$delivery_count];
+	$edition_data = $EDITIONS[$delivery_count];
 	header("Content-Type: text/html; charset=utf-8");
 	header('ETag: "' . md5('sample' . gmdate('dmY')) . '"');
 	require $_SERVER['DOCUMENT_ROOT'] . $ROOT_DIRECTORY . 'template.php';
@@ -48,7 +48,7 @@ function display_sample() {
 
 // Called by BERG Cloud to generate publication output to print.
 function display_edition() {
-	global $ROOT_DIRECTORY, $DESCRIPTIONS;
+	global $ROOT_DIRECTORY, $EDITIONS;
 
 	// We ignore timezones, but have to set a timezone or PHP will complain.
 	date_default_timezone_set('UTC');
@@ -75,13 +75,13 @@ function display_edition() {
 		header('ETag: "' . md5('empty' . gmdate('dmY')) . '"');
 		http_response_code(204);
 
-	} elseif (($delivery_count + 1) > count($DESCRIPTIONS)) {
+	} elseif (($delivery_count + 1) > count($EDITIONS)) {
 		// The publication has finished, so unsubscribe this subscriber.
 		http_response_code(410);
 
 	} else {
 		// It's all good, so display the publication.
-		$description = $DESCRIPTIONS[$delivery_count];
+		$edition_data = $EDITIONS[$delivery_count];
 		header("Content-Type: text/html; charset=utf-8");
 		header('ETag: "' . md5($delivery_count . gmdate('dmY')) . '"');
 		require $_SERVER['DOCUMENT_ROOT'] . $ROOT_DIRECTORY . 'template.php';
