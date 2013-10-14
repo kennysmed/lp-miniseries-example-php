@@ -43,7 +43,8 @@ function display_sample() {
 	global $ROOT_DIRECTORY, $EDITIONS;
 
 	$delivery_count = 0;
-	$edition_data = $EDITIONS[$delivery_count];
+	$image_name = $EDITIONS[$delivery_count][0];
+	$description = $EDITIONS[$delivery_count][1];
 	header("Content-Type: text/html; charset=utf-8");
 	header('ETag: "' . md5('sample' . gmdate('dmY')) . '"');
 	require $_SERVER['DOCUMENT_ROOT'] . $ROOT_DIRECTORY . 'template.php';
@@ -85,7 +86,8 @@ function display_edition() {
 
 	} else {
 		// It's all good, so display the publication.
-		$edition_data = $EDITIONS[$delivery_count];
+		$image_name = $EDITIONS[$delivery_count][0];
+		$description = $EDITIONS[$delivery_count][1];
 		header("Content-Type: text/html; charset=utf-8");
 		header('ETag: "' . md5($delivery_count . gmdate('dmY')) . '"');
 		require $_SERVER['DOCUMENT_ROOT'] . $ROOT_DIRECTORY . 'template.php';

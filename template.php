@@ -64,13 +64,13 @@
 			Serpents
 		</h1>
 
-	<img class="illustration" src="<?php echo $ROOT_DIRECTORY; ?>img/<?php echo $edition_data[0]; ?>" />
+	<img class="illustration" src="<?php echo $ROOT_DIRECTORY; ?>img/<?php echo $image_name; ?>" />
 
 		<p class="edition">
 			<?php echo ($delivery_count+1); ?> of <?php echo count($EDITIONS); ?>
 		</p>
 
-	<p class="description"><?php echo $edition_data[1] ?></p>
+	<p class="description"><?php echo $description ?></p>
 	</div>
 
 </body>
