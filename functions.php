@@ -2,47 +2,9 @@
 
 $ROOT_DIRECTORY = '/lp-miniseries-example-php/';
 
-// Data for each edition: image filename, description.
-$EDITIONS = array(
-	array('adder.png', 'Adder'),
-	array('aegopithecus.png', 'Aegopithecus'),
-	array('african_bugil.png', 'African Bugil'),
-	array('allocamelus.png', 'Allocamelus'),
-	array('alpine_mouse.png', 'Alpine Mouse'),
-	array('another_monster.png', 'Another Monster'),
-	array('antalope.png', 'Antalope'),
-	array('ape.png', 'Ape'),
-	array('ape_calitrich.png', 'Ape Calitrich'),
-	array('arabian_crocodile.png', 'Arabian or Egyptian Land Crocodile'),
-	array('arabian_sheep_broad.png', 'Arabian Sheep with a broad tail'),
-	array('arabian_sheep_long.png', 'Arabian Sheep with a long tail'),
-	array('aspes.png', 'Aspes'),
-	array('asse.png', 'Asse'),
-	array('badger.png', 'Badger'),
-	array('bear.png', 'Bear'),
-	array('bear_ape.png', 'Bear Ape Arctopithecus'),
-	array('beaver.png', 'Beaver'),
-	array('boa.png', 'Boa'),
-	array('camelopardals.png', 'Camelopardals'),
-	array('cat.png', 'Cat'),
-	array('cepus_monkey.png', 'Cepus or Martime monkey'),
-	array('hydra.png', 'Hydra'),
-	array('lamia.png', 'Lamia'),
-	array('lion.png', 'Lion'),
-	array('man_ape.png', 'Man Ape'),
-	array('mantichora.png', 'Mantichora'),
-	array('mole.png', 'The mole or want'),
-	array('porcupine.png', 'Porcuspine or Porcupine'),
-	array('prasyan_ape.png', 'Prasyan Ape'),
-	array('sagoin.png', 'Sagoin, called Galeopithecus'),
-	array('satyre.png', 'Satyre'),
-	array('scythian_wolf.png', 'Scythian Wolf'),
-	array('sphinx.png', 'Spinga or Sphinx'),
-	array('squirrel.png', 'Squirrel'),
-	array('su.png', 'A wilde beaste in the New Found World called SU'),
-	array('unicorn.png', 'Unicorn'),
-	array('winged_dragon.png', 'Winged Dragon'),
-);
+// $EDITIONS will be an array of arrays.
+// Each sub-array be like array("ape.png", "Ape")
+$EDITIONS = json_decode(file_get_contents(getcwd().'/../editions.json'));
 
 
 // Called to generate the sample shown on BERG Cloud Remote.
@@ -80,7 +42,7 @@ function display_edition() {
 		$date = strtotime(substr($_GET['local_delivery_time'], 0, -6));
 	} else {
 		// Default to now.
-		$date = gmdate();
+		$date = gmmktime();
 	}
 	
 	if (($delivery_count + 1) > count($EDITIONS)) {
